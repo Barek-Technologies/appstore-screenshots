@@ -32,13 +32,12 @@ It does two separate jobs:
 With npm (Node 18+), from your project folder:
 
 ```bash
-npx barek-appstore-screenshots             # this project: ./.claude/skills/
-npx barek-appstore-screenshots --global    # every project: ~/.claude/skills/
-npx barek-appstore-screenshots --dir .agents/skills   # any other agent's skills folder
+npx github:Barek-Technologies/appstore-screenshots                       # this project: ./.claude/skills/
+npx github:Barek-Technologies/appstore-screenshots --global              # every project: ~/.claude/skills/
+npx github:Barek-Technologies/appstore-screenshots --dir .agents/skills  # any other agent's skills folder
 ```
 
-Run the same command again to update. The same installer also runs straight
-from GitHub: `npx github:Barek-Technologies/appstore-screenshots` (add `--global` or `--dir` as above).
+Run the same command again to update.
 
 Or with the [skills CLI](https://www.npmjs.com/package/skills), or plain git:
 
