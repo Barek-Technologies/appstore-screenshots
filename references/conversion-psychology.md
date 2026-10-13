@@ -50,6 +50,15 @@ developer tools and finance, where it reads as stock imagery.
 Read the captions aloud as a list with the screens hidden — if it doesn't hold
 together as a paragraph, the order is wrong.
 
+## Reading competitors' screenshot sets
+
+Look at the top-ranking sets for patterns, not to copy:
+
+- **Count the panels.** Leaders often use all 10 (Apple) or 8 (Play), but most users never pass slot 3.
+- **Slot 1 type.** Outcome headline over the hero screen? A lifestyle photo? A panoramic set spanning panels? If every leader does the same thing, a clearly different slot 1 stands out in the grid, as long as it's still legible.
+- **Proof placement.** Where do ratings, awards and press appear? Only use proof you really have.
+- **Colour.** If the category is a sea of one colour, a contrasting background is free visibility.
+
 ## Copy patterns that convert
 
 - **Second person, present tense.** "You'll never blank again."

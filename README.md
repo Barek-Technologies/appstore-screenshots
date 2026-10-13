@@ -2,14 +2,18 @@
 
 A [Claude Code](https://claude.com/claude-code) skill that turns raw app screens
 into caption-led, conversion-focused App Store and Google Play screenshots at the
-exact pixel sizes the stores accept.
+exact pixel sizes the stores accept. It starts by studying what the top-ranking
+apps in your category show, so the screens it picks are the ones that convert.
 
 It does two separate jobs:
 
 1. **Decide** which screens go in which slots, and what caption sits on each.
-   This is where installs are won or lost, so the skill makes the agent read
-   your app, plan the sequence and show you the captions as plain text before
-   anything is rendered.
+   This is where installs are won or lost. The agent downloads the screenshot
+   sets of the top-ranking apps for your search terms and notes what they lead
+   with, then ranks your own screens by conversion strength: the aha moment,
+   the daily loop, the differentiator. You see the captions as plain text
+   before anything is rendered. Once you're live, it sets up an A/B test of
+   the first two panels.
 2. **Render** those decisions into upload-ready PNGs: a gradient background,
    a headline caption and your screen inside a device frame.
 
@@ -19,28 +23,38 @@ It does two separate jobs:
 | --- | --- |
 | `SKILL.md` | The workflow the agent follows: target size, screen choice, captions, capture, compose, verify |
 | `references/conversion-psychology.md` | Slot-by-slot framework for ordering screenshots and writing captions |
+| `scripts/appstore.mjs` | Searches the App Store and downloads top apps' screenshot sets for study (Node 18+) |
 | `scripts/capture.sh` | Captures the booted iOS simulator or an attached Android device/emulator |
 | `scripts/compose.py` | Renders a JSON spec into store-sized PNGs (Pillow only) |
 
 ## Install
 
-Clone into your skills folder, either for one project or for every project:
+With npm (Node 18+), from your project folder:
 
 ```bash
-# this project only
-git clone https://github.com/Barek-Technologies/appstore-screenshots .claude/skills/appstore-screenshots
+npx barek-appstore-screenshots             # this project: ./.claude/skills/
+npx barek-appstore-screenshots --global    # every project: ~/.claude/skills/
+npx barek-appstore-screenshots --dir .agents/skills   # any other agent's skills folder
+```
 
-# all projects
+Run the same command again to update.
+
+Or with the [skills CLI](https://www.npmjs.com/package/skills), or plain git:
+
+```bash
+npx skills add Barek-Technologies/appstore-screenshots
 git clone https://github.com/Barek-Technologies/appstore-screenshots ~/.claude/skills/appstore-screenshots
 ```
 
-Then ask Claude for "app store screenshots" or "Play Store listing images", or
-run `/appstore-screenshots`.
-
-Requirements: Python 3 with Pillow (`python3 -m pip install Pillow`). Capturing
-needs Xcode (`xcrun simctl`) for iOS and `adb` for Android.
+Requirements: Python 3 with Pillow (`python3 -m pip install Pillow`) for
+composing. Capturing needs Xcode (`xcrun simctl`) for iOS and `adb` for Android.
 
 ## Use the scripts directly
+
+```bash
+scripts/appstore.mjs search "habit tracker" --limit 5
+scripts/appstore.mjs shots <app id> --dir research/shots/<name>
+```
 
 ```bash
 scripts/capture.sh ios out/raw/01-home.png
@@ -98,6 +112,17 @@ or Windows, set the font paths explicitly.
 - No competitor trademarks or real people's likenesses.
 - Only UI that exists in the build being submitted.
 - Captions localized per storefront.
+
+## More Barek skills
+
+| Skill | What it does |
+| --- | --- |
+| [barek-competitor-watch](https://github.com/Barek-Technologies/barek-competitor-watch) | Competitor study and review mining → what to build next |
+| [barek-aso](https://github.com/Barek-Technologies/barek-aso) | Store name, subtitle, keywords and descriptions, researched against what ranks |
+| [appstore-screenshots](https://github.com/Barek-Technologies/appstore-screenshots) | Highest-converting screens, captioned and rendered at exact store sizes |
+
+They share one research client (`scripts/appstore.mjs`) and hand off to each
+other: the competitor study feeds the copy and the screenshot story.
 
 ## License
 

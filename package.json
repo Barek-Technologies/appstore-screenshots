@@ -1,0 +1,38 @@
+{
+  "name": "barek-appstore-screenshots",
+  "version": "1.0.0",
+  "description": "Agent skill: pick the highest-converting screens and render caption-led App Store and Google Play screenshots at exact store sizes",
+  "type": "module",
+  "bin": {
+    "barek-appstore-screenshots": "bin/install.mjs"
+  },
+  "files": [
+    "SKILL.md",
+    "references",
+    "scripts",
+    "bin"
+  ],
+  "keywords": [
+    "claude-code",
+    "agent-skills",
+    "claude-skill",
+    "app-store",
+    "google-play",
+    "screenshots",
+    "aso",
+    "marketing"
+  ],
+  "homepage": "https://github.com/Barek-Technologies/appstore-screenshots#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Barek-Technologies/appstore-screenshots.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Barek-Technologies/appstore-screenshots/issues"
+  },
+  "author": "Barek Technologies Limited",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
